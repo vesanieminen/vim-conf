@@ -31,7 +31,7 @@ ln -s ~/.vim/vim-conf/.vimrc ~/.vimrc
 ln -s ~/.vim/vim-conf/.gvimrc ~/.gvimrc
 ```
 
- * Now you're ready to start proper vimming :)
+ * Run the ```:BundleInstall``` command in vim you're ready to start proper vimming :)
 
 Additional information for OS X users
 ====
