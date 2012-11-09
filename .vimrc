@@ -33,37 +33,39 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 " Basic vim configurations:
-if filereadable(expand("~/.vim/bundle/inkpot/colors/inkpot.vim"))
-    colorscheme inkpot
-endif
-syntax on
-set formatoptions=l
-set linebreak " type help linebreak for info
+    if filereadable(expand("~/.vim/bundle/inkpot/colors/inkpot.vim"))
+        colorscheme inkpot
+    endif
+    syntax on
+    set formatoptions=l
+    set linebreak " type help linebreak for info
+    set t_Co=256
 
-"tabstop	number of spaces a <Tab> in the text stands for	(local to buffer)
-:set ts=4
-"shiftwidth	number of spaces used for each step of (auto)indent	(local to buffer)
-:set sw=4
-"smarttab	a <Tab> in an indent inserts 'shiftwidth' spaces
-:set sta
-"softtabstop	if non-zero, number of spaces to insert for a <Tab>	(local to buffer)
-:set sts=4
-"expandtab	expand <Tab> to spaces in Insert mode	(local to buffer)
-:set et
-"autoindent	automatically set the indent of a new line	(local to buffer)
-:set ai
-"cindent	enable specific indenting for C code	(local to buffer)
-:set cin
-"wrap	long lines wrap
-:set wrap
-"smartindent	do clever autoindenting	(local to buffer)
-:set si
-"cinkeys	keys that trigger C-indenting in Insert mode	(local to buffer)
-:set cink=0{,0},0),!^F,o,O,e
-"textwidth	line length above which to break a line	(local to buffer)
-:set tw=0
-" single character insert
-:nnoremap <Space> i_<Esc>r
+    "tabstop	number of spaces a <Tab> in the text stands for	(local to buffer)
+    :set ts=4
+    "shiftwidth	number of spaces used for each step of (auto)indent	(local to buffer)
+    :set sw=4
+    "smarttab	a <Tab> in an indent inserts 'shiftwidth' spaces
+    :set sta
+    "softtabstop	if non-zero, number of spaces to insert for a <Tab>	(local to buffer)
+    :set sts=4
+    "expandtab	expand <Tab> to spaces in Insert mode	(local to buffer)
+    :set et
+    "autoindent	automatically set the indent of a new line	(local to buffer)
+    :set ai
+    "cindent	enable specific indenting for C code	(local to buffer)
+    :set cin
+    "wrap	long lines wrap
+    :set wrap
+    "smartindent	do clever autoindenting	(local to buffer)
+    :set si
+    "cinkeys	keys that trigger C-indenting in Insert mode	(local to buffer)
+    :set cink=0{,0},0),!^F,o,O,e
+    "textwidth	line length above which to break a line	(local to buffer)
+    :set tw=0
+    " single character insert
+    :nnoremap <Space> i_<Esc>r
+" / Basic vim configurations
 
 " tab navigation like firefox
 nmap <C-S-tab> :tabprevious<CR>
@@ -91,10 +93,13 @@ map <Leader>j :TagbarToggle<CR>
 map <Leader>e :CtrlP<CR>
 map <Leader>o :NERDTreeToggle<CR>
 
+let g:ackprg="~/bin/ack -H --nocolor --nogroup --column --nobinary"
+
 " ctrlp configurations
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
 	\ 'file': '\v\.(exe|so|dll|cc\.d|cc\.o|cc\.odeps)$',
+	\ '__src__': '*__src__',
 	\ }
 
 " GUI specific configurations:
