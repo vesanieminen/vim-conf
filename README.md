@@ -1,4 +1,4 @@
 vim
 ===
 
-My Vim configuration and plugins
+My Vim configuration. Currently utilizes Vundle package manager: https://github.com/gmarik/vundle
