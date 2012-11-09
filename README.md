@@ -3,7 +3,7 @@ vim-conf
 
 My Vim configuration.
 
-Currently utilizes Vundle package manager: https://github.com/gmarik/vundle
+Currently utilizes Vundle, a plugin manager for vim: https://github.com/gmarik/vundle
 
 Installation
 ====
