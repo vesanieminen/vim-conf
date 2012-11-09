@@ -32,3 +32,10 @@ ln -s ~/.vim/vim-conf/.gvimrc ~/.gvimrc
 ```
 
  * Now you're ready to start proper vimming :)
+
+Additional information for OS X users
+====
+
+In case you're using OS X I recommend using MacVim: https://github.com/b4winckler/macvim. To get MacVim, you should use Brew http://mxcl.github.com/homebrew/, the missing package manager for OS X, which makes it trivial to install new software on your computer.
+
+To install Brew run this one liner in your terminal: ```ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"```. After that you can download and compile MacVim like so: ```brew install macvim```.
