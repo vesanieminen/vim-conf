@@ -1,9 +1,7 @@
 vim-conf
 ===
 
-My Vim configuration.
-
-Currently utilizes [Vundle](https://github.com/gmarik/vundle), a plugin manager for vim.
+Here's my Vim configuration. It currently utilizes [Vundle](https://github.com/gmarik/vundle), a plugin manager for vim to make it easier to install and manage.
 
 Installation
 ====
