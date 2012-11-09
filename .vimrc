@@ -33,7 +33,9 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 " Basic vim configurations:
-colorscheme inkpot
+if filereadable(expand("~/.vim/bundle/inkpot/colors/inkpot.vim"))
+    colorscheme inkpot
+endif
 syntax on
 set formatoptions=l
 set linebreak " type help linebreak for info
