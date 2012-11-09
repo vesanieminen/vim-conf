@@ -20,7 +20,7 @@ rm ~/.gvimrc
  * Clone vundle under the .vim directory:
 
 ```
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 ```
 
  * Clone my vim-conf repo under some directory (eg. ~/.vim/vim-conf) and create symbolic links to your home directory root:
