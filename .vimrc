@@ -61,7 +61,7 @@ set linebreak " type help linebreak for info
 "textwidth	line length above which to break a line	(local to buffer)
 :set tw=0
 " single character insert
-:nmap <Space> i_<Esc>r
+:nnoremap <Space> i_<Esc>r
 
 " tab navigation like firefox
 nmap <C-S-tab> :tabprevious<CR>
