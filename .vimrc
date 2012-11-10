@@ -41,6 +41,7 @@ filetype plugin indent on     " required!
         colorscheme inkpot
     endif
     syntax on
+    set hlsearch " highlight search pattern text
     set noswapfile " No swap files
     set formatoptions=l
     set linebreak " type help linebreak for info
@@ -82,6 +83,12 @@ imap <C-tab> <Esc>:tabnext<CR>i
 nmap <C-S-t> :tabnew<CR>
 imap <C-S-t> <Esc>:tabnew<CR>
 
+" faster window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " clang_complete configurations:
 "let g:clang_user_options='|| exit 0' " disabled because this wasn't needed for me
 let g:clang_complete_auto = 0
@@ -106,7 +113,7 @@ map <Leader>j :TagbarToggle<CR>
 map <Leader>o :NERDTreeToggle<CR>
 map <Leader>O :NERDTreeFind<CR>
 
-let g:ackprg="~/bin/ack -H --nocolor --nogroup --column --nobinary"
+let g:ackprg="ack -H --nocolor --nogroup --column --nobinary"
 
 " ctrlp configurations
 let g:ctrpl_map = '<leader>e'
@@ -129,3 +136,7 @@ endif
 
 nmap <leader>, :tabedit $MYVIMRC<CR>
 
+let g:UltiSnipsSnippetsDir = '~/.vim/bundle/UltiSnips/UltiSnips'
+"let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/snippets' " this doesn't work at the moment 10.11.2012
+
+let g:tagbar_sort = 0
