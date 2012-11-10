@@ -3,4 +3,5 @@ if has("gui_macvim")
     map <D-o> :NERDTreeToggle<CR>
     map <D-e> :CtrlP<CR>
     map <D-j> :TagbarToggle<CR>
+    map <D-O> :NERDTreeFind<CR>
 endif

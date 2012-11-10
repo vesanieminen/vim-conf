@@ -104,6 +104,7 @@ let g:SuperTabLongestHighlight = 1
 let mapleader=","
 map <Leader>j :TagbarToggle<CR>
 map <Leader>o :NERDTreeToggle<CR>
+map <Leader>O :NERDTreeFind<CR>
 
 let g:ackprg="~/bin/ack -H --nocolor --nogroup --column --nobinary"
 
