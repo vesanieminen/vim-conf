@@ -20,6 +20,9 @@ Bundle 'fugitive.vim'
 Bundle 'inkpot'
 Bundle 'colorv.vim'
 Bundle 'greplace.vim'
+Bundle 'git://github.com/godlygeek/csapprox.git'
+Bundle 'UltiSnips'
+Bundle 'SuperTab-continued.'
 
 filetype plugin indent on     " required!
 "
@@ -81,11 +84,18 @@ imap <C-S-t> <Esc>:tabnew<CR>
 "let g:clang_user_options='|| exit 0' " disabled because this wasn't needed for me
 let g:clang_complete_auto = 0
 let g:clang_complete_copen = 1
-"let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 let g:clang_use_library = 1
 let g:clang_close_preview = 1
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
+"let g:clang_auto_select = 1 " doesn't work because of SuperTab, using
+"SuperTab's LongestHighlight which does the same thing
+
+set completeopt=menu,longest
+
+let g:SuperTabDefaultCompletionType='<c-x><c-u>'
+let g:SuperTabLongestHighlight = 1
 
 " map the <Leader> -key to , for terminal vim and gvim
 let mapleader=","
@@ -107,4 +117,11 @@ if has("gui")
     set guifont=Monaco:h13
     set guioptions=egmt
 endif
+
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+nmap <leader>, :tabedit $MYVIMRC<CR>
 
