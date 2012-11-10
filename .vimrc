@@ -98,9 +98,9 @@ let g:ackprg="~/bin/ack -H --nocolor --nogroup --column --nobinary"
 " ctrlp configurations
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll|cc\.d|cc\.o|cc\.odeps)$',
-	\ '__src__': '*__src__',
+	\ 'file': '\v\.(exe|so|dll)$',
 	\ }
+set wildignore+=*/build/bin/*,*/build/build/*
 
 " GUI specific configurations:
 if has("gui")
