@@ -23,6 +23,7 @@ Bundle 'greplace.vim'
 Bundle 'git://github.com/godlygeek/csapprox.git'
 Bundle 'UltiSnips'
 Bundle 'SuperTab-continued.'
+Bundle 'unimpaired.vim'
 
 filetype plugin indent on     " required!
 "
@@ -100,12 +101,12 @@ let g:SuperTabLongestHighlight = 1
 " map the <Leader> -key to , for terminal vim and gvim
 let mapleader=","
 map <Leader>j :TagbarToggle<CR>
-map <Leader>e :CtrlP<CR>
 map <Leader>o :NERDTreeToggle<CR>
 
 let g:ackprg="~/bin/ack -H --nocolor --nogroup --column --nobinary"
 
 " ctrlp configurations
+let g:ctrpl_map = '<leader>e'
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
 	\ 'file': '\v\.(exe|so|dll)$',
@@ -119,9 +120,9 @@ if has("gui")
 endif
 
 " Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
+"if has("autocmd")
+"  autocmd bufwritepost .vimrc source $MYVIMRC
+"endif
 
 nmap <leader>, :tabedit $MYVIMRC<CR>
 
