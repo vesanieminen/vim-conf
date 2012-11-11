@@ -113,12 +113,12 @@ map <Leader>j :TagbarToggle<CR>
 map <Leader>o :NERDTreeToggle<CR>
 map <Leader>O :NERDTreeFind<CR>
 
-let g:ackprg="ack -H --nocolor --nogroup --column --nobinary"
+let g:ackprg='ack -H --nocolor --nogroup --column --nobinary'
 
 " ctrlp configurations
 let g:ctrpl_map = '<leader>e'
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	\ 'dir':  '\v[\/]\.(git|hg|svn|redo)$',
 	\ 'file': '\v\.(exe|so|dll)$',
 	\ }
 set wildignore+=*/build/bin/*,*/build/build/*
