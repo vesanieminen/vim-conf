@@ -46,6 +46,7 @@ filetype plugin indent on     " required!
     set formatoptions=l
     set linebreak " type help linebreak for info
     set t_Co=256
+    set cursorline " highlight the cursorline
 
     "tabstop	number of spaces a <Tab> in the text stands for	(local to buffer)
     :set ts=4
@@ -140,3 +141,4 @@ let g:UltiSnipsSnippetsDir = '~/.vim/bundle/UltiSnips/UltiSnips'
 "let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/snippets' " this doesn't work at the moment 10.11.2012
 
 let g:tagbar_sort = 0
+
