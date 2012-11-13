@@ -1,7 +1,11 @@
 if has("gui_macvim")
     macmenu File.Open\.\.\. key=<nop>
-    map <D-o> :NERDTreeToggle<CR>
-    map <D-e> :CtrlP<CR>
-    map <D-j> :TagbarToggle<CR>
-    map <D-O> :NERDTreeFind<CR>
+    nnoremap <D-o> :NERDTreeToggle<CR>
+    nnoremap <D-e> :CtrlP<CR>
+    nnoremap <D-j> :TagbarToggle<CR>
+    nnoremap <D-O> :NERDTreeFind<CR>
+    macmenu Edit.Find.Find\ Next key=<nop>
+    nnoremap <D-g> :GundoToggle<CR>
 endif
+
+set cursorline " highlight the cursorline

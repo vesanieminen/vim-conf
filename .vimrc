@@ -24,6 +24,7 @@ Bundle 'git://github.com/godlygeek/csapprox.git'
 Bundle 'UltiSnips'
 Bundle 'SuperTab-continued.'
 Bundle 'unimpaired.vim'
+Bundle 'Gundo'
 
 filetype plugin indent on     " required!
 "
@@ -46,7 +47,6 @@ filetype plugin indent on     " required!
     set formatoptions=l
     set linebreak " type help linebreak for info
     set t_Co=256
-    set cursorline " highlight the cursorline
 
     "tabstop	number of spaces a <Tab> in the text stands for	(local to buffer)
     :set ts=4
@@ -105,14 +105,18 @@ let g:clang_snippets_engine = 'clang_complete'
 
 set completeopt=menu,longest
 
-let g:SuperTabDefaultCompletionType='<c-x><c-u>'
+"let g:SuperTabDefaultCompletionType='<c-x><c-u>'
+let g:SuperTabDefaultCompletionType='context'
+let g:SuperTabContextDefaultCompletionType='<c-n>'
 let g:SuperTabLongestHighlight = 1
 
 " map the <Leader> -key to , for terminal vim and gvim
 let mapleader=","
-map <Leader>j :TagbarToggle<CR>
-map <Leader>o :NERDTreeToggle<CR>
-map <Leader>O :NERDTreeFind<CR>
+nnoremap <Leader>j :TagbarToggle<CR>
+nnoremap <Leader>o :NERDTreeToggle<CR>
+nnoremap <Leader>O :NERDTreeFind<CR>
+nnoremap <leader>g :GundoToggle<CR>
+nnoremap <leader>, :tabedit $MYVIMRC<CR>
 
 let g:ackprg='ack -H --nocolor --nogroup --column --nobinary'
 
@@ -135,7 +139,6 @@ endif
 "  autocmd bufwritepost .vimrc source $MYVIMRC
 "endif
 
-nmap <leader>, :tabedit $MYVIMRC<CR>
 
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/UltiSnips/UltiSnips'
 "let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/snippets' " this doesn't work at the moment 10.11.2012
