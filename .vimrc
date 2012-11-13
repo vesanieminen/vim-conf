@@ -74,6 +74,12 @@ filetype plugin indent on     " required!
     :nnoremap <Space> i_<Esc>r
 " / Basic vim configurations
 
+"folding settings
+set foldmethod=syntax "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=50         "this is just what i use
+
 " tab navigation like firefox
 nmap <C-S-tab> :tabprevious<CR>
 nmap <C-tab> :tabnext<CR>
@@ -138,7 +144,6 @@ endif
 "if has("autocmd")
 "  autocmd bufwritepost .vimrc source $MYVIMRC
 "endif
-
 
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/UltiSnips/UltiSnips'
 "let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/snippets' " this doesn't work at the moment 10.11.2012
