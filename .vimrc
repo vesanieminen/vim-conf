@@ -2,40 +2,45 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-" My Bundles here:
+" My Plugins here:
 "
 " original repos on github
-Bundle 'ctrlp.vim'
-Bundle 'ack.vim'
-Bundle 'clang-complete'
-Bundle 'Tagbar'
-Bundle 'The-NERD-tree'
-Bundle 'fugitive.vim'
-Bundle 'inkpot'
-Bundle 'colorv.vim'
-Bundle 'greplace.vim'
-Bundle 'git://github.com/godlygeek/csapprox.git'
-Bundle 'UltiSnips'
-Bundle 'SuperTab-continued.'
-Bundle 'unimpaired.vim'
-Bundle 'Gundo'
+Plugin 'ctrlp.vim'
+Plugin 'ack.vim'
+Plugin 'clang-complete'
+Plugin 'Tagbar'
+Plugin 'The-NERD-tree'
+Plugin 'fugitive.vim'
+Plugin 'inkpot'
+Plugin 'colorv.vim'
+Plugin 'greplace.vim'
+Plugin 'git://github.com/godlygeek/csapprox.git'
+Plugin 'UltiSnips'
+Plugin 'SuperTab-continued.'
+Plugin 'unimpaired.vim'
+Plugin 'Gundo'
+Plugin 'git://github.com/nosami/Omnisharp.git'
+Plugin 'git://github.com/tpope/vim-dispatch.git'
+Plugin 'Syntastic'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 filetype plugin indent on     " required!
 "
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 "
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" NOTE: comments after Plugin command are not allowed..
 
 " Basic vim configurations:
     if filereadable(expand("~/.vim/bundle/inkpot/colors/inkpot.vim"))
