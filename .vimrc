@@ -13,7 +13,7 @@ Plugin 'gmarik/vundle'
 " original repos on github
 Plugin 'ctrlp.vim'
 Plugin 'ack.vim'
-Plugin 'clang-complete'
+"Plugin 'clang-complete'
 Plugin 'Tagbar'
 Plugin 'The-NERD-tree'
 Plugin 'fugitive.vim'
@@ -80,50 +80,51 @@ filetype plugin indent on     " required!
 " / Basic vim configurations
 
 "folding settings
-set foldmethod=syntax "fold based on indent
-set foldnestmax=10      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=50         "this is just what i use
+    set foldmethod=syntax "fold based on indent
+    set foldnestmax=10      "deepest fold is 10 levels
+    set nofoldenable        "dont fold by default
+    set foldlevel=50         "this is just what i use
 
 " tab navigation like firefox
-nmap <C-S-tab> :tabprevious<CR>
-nmap <C-tab> :tabnext<CR>
-map <C-S-tab> :tabprevious<CR>
-map <C-tab> :tabnext<CR>
-imap <C-S-tab> <Esc>:tabprevious<CR>i
-imap <C-tab> <Esc>:tabnext<CR>i
-nmap <C-S-t> :tabnew<CR>
-imap <C-S-t> <Esc>:tabnew<CR>
+    nmap <C-S-tab> :tabprevious<CR>
+    nmap <C-tab> :tabnext<CR>
+    map <C-S-tab> :tabprevious<CR>
+    map <C-tab> :tabnext<CR>
+    imap <C-S-tab> <Esc>:tabprevious<CR>i
+    imap <C-tab> <Esc>:tabnext<CR>i
+    nmap <C-S-t> :tabnew<CR>
+    imap <C-S-t> <Esc>:tabnew<CR>
 
 " faster window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+    nnoremap <C-h> <C-w>h
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-l> <C-w>l
 
 " clang_complete configurations:
-"let g:clang_user_options='|| exit 0' " disabled because this wasn't needed for me
-let g:clang_complete_auto = 0
-let g:clang_complete_copen = 1
-"let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-let g:clang_use_library = 0
-let g:clang_close_preview = 1
-let g:clang_snippets = 1
-let g:clang_snippets_engine = 'clang_complete'
-"let g:clang_snippets_engine = 'ultisnips'
-"let g:clang_auto_select = 1 " doesn't work because of SuperTab, using
-"SuperTab's LongestHighlight which does the same thing
+    "let g:clang_user_options='|| exit 0' " disabled because this wasn't needed for me
+    let g:clang_complete_auto = 0
+    let g:clang_complete_copen = 1
+    "let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+    let g:clang_use_library = 0
+    let g:clang_close_preview = 1
+    let g:clang_snippets = 1
+    let g:clang_snippets_engine = 'clang_complete'
+    "let g:clang_snippets_engine = 'ultisnips'
+    "let g:clang_auto_select = 1 " doesn't work because of SuperTab, using
+    "SuperTab's LongestHighlight which does the same thing
 
 "set completeopt=menu,longest
 set completeopt=longest,menuone,preview
 
-"let g:SuperTabDefaultCompletionType='<c-x><c-u>'
-let g:SuperTabDefaultCompletionType='context'
-"let g:SuperTabContextDefaultCompletionType='<c-n>'
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabLongestHighlight = 1
-let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
-let g:SuperTabClosePreviewOnPopupClose = 1
+" supertab:
+    "let g:SuperTabDefaultCompletionType='<c-x><c-u>'
+    let g:SuperTabDefaultCompletionType='context'
+    "let g:SuperTabContextDefaultCompletionType='<c-n>'
+    let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+    let g:SuperTabLongestHighlight = 1
+    let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
+    let g:SuperTabClosePreviewOnPopupClose = 1
 
 " map the <Leader> -key to , for terminal vim and gvim
 let mapleader=","
@@ -134,67 +135,68 @@ nnoremap <leader>g :GundoToggle<CR>
 nnoremap <leader>, :tabedit $MYVIMRC<CR>
 
 "OmniSharp settings:
-"Timeout in seconds to wait for a response from the server
-"let g:OmniSharp_timeout = 1
-"Showmatch significantly slows down omnicomplete
-"when the first match contains parentheses.
-set noshowmatch
-"Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
-autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-"Move the preview window (code documentation) to the bottom of the screen, so it doesn't move the code!
-"You might also want to look at the echodoc plugin
-set splitbelow
-" Get Code Issues and syntax errors
-let g:syntastic_cs_checkers = ['syntax', 'issues']
-"autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
-"show type information automatically when the cursor stops moving
-autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-" this setting controls how long to pause (in ms) before fetching type / symbol information.
-set updatetime=500
-" Remove 'Press Enter to continue' message when type information is longer than one line.
-set cmdheight=2
-"The following commands are contextual, based on the current cursor position.
-autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
-nnoremap <leader>fi :OmniSharpFindImplementations<cr>
-nnoremap <leader>ft :OmniSharpFindType<cr>
-nnoremap <leader>fs :OmniSharpFindSymbol<cr>
-nnoremap <leader>fu :OmniSharpFindUsages<cr>
-nnoremap <leader>fm :OmniSharpFindMembersInBuffer<cr>
-" cursor can be anywhere on the line containing an issue for this one
-nnoremap <leader>x  :OmniSharpFixIssue<cr>
-nnoremap <leader>fx :OmniSharpFixUsings<cr>
-nnoremap <leader>tt :OmniSharpTypeLookup<cr>
-nnoremap <leader>dc :OmniSharpDocumentation<cr>
-" rename with dialog
-nnoremap <leader>nm :OmniSharpRename<cr>
-nnoremap <F2> :OmniSharpRename<cr>      
-" rename without dialog - with cursor on the symbol to rename... ':Rename newname'
-command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-" Force OmniSharp to reload the solution. Useful when switching branches etc.
-nnoremap <leader>rl :OmniSharpReloadSolution<cr>
-nnoremap <leader>cf :OmniSharpCodeFormat<cr>
-" Load the current .cs file to the nearest project
-nnoremap <leader>tp :OmniSharpAddToProject<cr>
-" Automatically add new cs files to the nearest project on save
-autocmd BufWritePost *.cs call OmniSharp#AddToProject()
-" (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
-nnoremap <leader>ss :OmniSharpStartServer<cr>
-nnoremap <leader>sp :OmniSharpStopServer<cr>
-" Add syntax highlighting for types and interfaces
-nnoremap <leader>ht :OmniSharpHighlightTypes<cr>
-"Don't ask to save when changing buffers (i.e. when jumping to a type definition)
-set hidden
+    "Timeout in seconds to wait for a response from the server
+    "let g:OmniSharp_timeout = 1
+    "Showmatch significantly slows down omnicomplete
+    "when the first match contains parentheses.
+    set noshowmatch
+    "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
+    autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+    "Move the preview window (code documentation) to the bottom of the screen, so it doesn't move the code!
+    "You might also want to look at the echodoc plugin
+    set splitbelow
+    " Get Code Issues and syntax errors
+    let g:syntastic_cs_checkers = ['syntax', 'issues']
+    autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+    "show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+    " this setting controls how long to pause (in ms) before fetching type / symbol information.
+    set updatetime=500
+    " Remove 'Press Enter to continue' message when type information is longer than one line.
+    set cmdheight=2
+    "The following commands are contextual, based on the current cursor position.
+    autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
+    nnoremap <leader>fi :OmniSharpFindImplementations<cr>
+    nnoremap <leader>ft :OmniSharpFindType<cr>
+    nnoremap <leader>fs :OmniSharpFindSymbol<cr>
+    nnoremap <leader>fu :OmniSharpFindUsages<cr>
+    nnoremap <leader>fm :OmniSharpFindMembersInBuffer<cr>
+    " cursor can be anywhere on the line containing an issue for this one
+    nnoremap <leader>x  :OmniSharpFixIssue<cr>
+    nnoremap <leader>fx :OmniSharpFixUsings<cr>
+    nnoremap <leader>tt :OmniSharpTypeLookup<cr>
+    nnoremap <leader>dc :OmniSharpDocumentation<cr>
+    " rename with dialog
+    nnoremap <leader>nm :OmniSharpRename<cr>
+    nnoremap <F2> :OmniSharpRename<cr>      
+    " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
+    command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+    " Force OmniSharp to reload the solution. Useful when switching branches etc.
+    nnoremap <leader>rl :OmniSharpReloadSolution<cr>
+    nnoremap <leader>cf :OmniSharpCodeFormat<cr>
+    " Load the current .cs file to the nearest project
+    nnoremap <leader>tp :OmniSharpAddToProject<cr>
+    " Automatically add new cs files to the nearest project on save
+    autocmd BufWritePost *.cs call OmniSharp#AddToProject()
+    " (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
+    nnoremap <leader>ss :OmniSharpStartServer<cr>
+    nnoremap <leader>sp :OmniSharpStopServer<cr>
+    " Add syntax highlighting for types and interfaces
+    nnoremap <leader>ht :OmniSharpHighlightTypes<cr>
+    "Don't ask to save when changing buffers (i.e. when jumping to a type definition)
+    set hidden
 " /OmniSharp settings
 
 let g:ackprg='ack -H --nocolor --nogroup --column --nobinary'
 
 " ctrlp configurations
-let g:ctrpl_map = '<leader>e'
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn|redo)$',
-	\ 'file': '\v\.(exe|so|dll)$',
-	\ }
-set wildignore+=*/build/bin/*,*/build/build/*
+    "let g:ctrpl_map = '<leader>e'
+    nnoremap <leader>e :CtrlP<CR>
+    let g:ctrlp_custom_ignore = {
+        \ 'dir':  '\v[\/]\.(git|hg|svn|redo)$',
+        \ 'file': '\v\.(exe|so|dll)$',
+        \ }
+    set wildignore+=*/build/bin/*,*/build/build/*
 
 " GUI specific configurations:
 if has("gui")
@@ -220,3 +222,5 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+set wildmode=list:longest,full
