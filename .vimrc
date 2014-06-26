@@ -154,6 +154,10 @@ nnoremap <leader>, :tabedit $MYVIMRC<CR>
     set updatetime=500
     " Remove 'Press Enter to continue' message when type information is longer than one line.
     set cmdheight=2
+    " Contextual code actions (requires CtrlP)
+    nnoremap <leader>a :OmniSharpGetCodeActions<cr>
+    " Run code actions with text selected in visual mode to extract method
+    vnoremap <leader>a :call OmniSharp#GetCodeActions('visual')<cr>
     "The following commands are contextual, based on the current cursor position.
     autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
     nnoremap <leader>fi :OmniSharpFindImplementations<cr>
