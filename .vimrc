@@ -116,15 +116,21 @@ filetype plugin indent on     " required!
 
 "set completeopt=menu,longest
 set completeopt=longest,menuone,preview
+"set completeopt=longest,menuone
 
 " supertab:
     "let g:SuperTabDefaultCompletionType='<c-x><c-u>'
     let g:SuperTabDefaultCompletionType='context'
     "let g:SuperTabContextDefaultCompletionType='<c-n>'
     let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-    let g:SuperTabLongestHighlight = 1
+    "let g:SuperTabLongestHighlight = 1
     let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
     let g:SuperTabClosePreviewOnPopupClose = 1
+    " If you prefer the Omni-Completion tip window to close when a selection is
+    " made, these lines close it on movement in insert mode or when leaving
+    " insert mode
+    "autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+    "autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " map the <Leader> -key to , for terminal vim and gvim
 let mapleader=","
@@ -145,6 +151,10 @@ nnoremap <leader>, :tabedit $MYVIMRC<CR>
     "Move the preview window (code documentation) to the bottom of the screen, so it doesn't move the code!
     "You might also want to look at the echodoc plugin
     set splitbelow
+    " Synchronous build (blocks Vim)
+    "autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuild<cr>
+    " Builds can also run asynchronously with vim-dispatch installed
+    autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuildAsync<cr>
     " Get Code Issues and syntax errors
     let g:syntastic_cs_checkers = ['syntax', 'issues']
     autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
