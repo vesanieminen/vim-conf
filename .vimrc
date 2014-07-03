@@ -13,7 +13,6 @@ Plugin 'gmarik/vundle'
 " original repos on github
 Plugin 'ctrlp.vim'
 Plugin 'ack.vim'
-"Plugin 'clang-complete'
 Plugin 'Tagbar'
 Plugin 'The-NERD-tree'
 Plugin 'fugitive.vim'
@@ -22,13 +21,14 @@ Plugin 'colorv.vim'
 Plugin 'greplace.vim'
 Plugin 'git://github.com/godlygeek/csapprox.git'
 Plugin 'UltiSnips'
-"Plugin 'SuperTab-continued.'
+Plugin 'SuperTab-continued.'
 Plugin 'unimpaired.vim'
 Plugin 'Gundo'
 Plugin 'git://github.com/nosami/Omnisharp.git'
 Plugin 'git://github.com/tpope/vim-dispatch.git'
 Plugin 'Syntastic'
-Plugin 'git://github.com/Valloric/YouCompleteMe.git'
+"Plugin 'git://github.com/Valloric/YouCompleteMe.git'
+Plugin 'Keithbsmiley/swift.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -101,20 +101,7 @@ filetype plugin indent on     " required!
     nnoremap <C-j> <C-w>j
     nnoremap <C-k> <C-w>k
     nnoremap <C-l> <C-w>l
-
-" clang_complete configurations:
-    ""let g:clang_user_options='|| exit 0' " disabled because this wasn't needed for me
-    "let g:clang_complete_auto = 0
-    "let g:clang_complete_copen = 1
-    ""let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-    "let g:clang_use_library = 0
-    "let g:clang_close_preview = 1
-    "let g:clang_snippets = 1
-    "let g:clang_snippets_engine = 'clang_complete'
-    ""let g:clang_snippets_engine = 'ultisnips'
-    ""let g:clang_auto_select = 1 " doesn't work because of SuperTab, using
-    ""SuperTab's LongestHighlight which does the same thing
-
+    
 "set completeopt=menu,longest
 set completeopt=longest,menuone,preview
 "set completeopt=longest,menuone
@@ -145,14 +132,13 @@ nnoremap <leader>, :tabedit $MYVIMRC<CR>
     "let g:Omnisharp_start_server = 0
     "This is the default value, setting it isn't actually necessary
     "let g:OmniSharp_host = "http://localhost:2000"
-    "let g:OmniSharp_host = "http://localhost:51964"
     "Timeout in seconds to wait for a response from the server
     "let g:OmniSharp_timeout = 1
     "Showmatch significantly slows down omnicomplete
     "when the first match contains parentheses.
     set noshowmatch
     "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
-    "autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+    autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
     " Fetch full documentation during omnicomplete requests. 
     " There is a performance penalty with this (especially on Mono)
     " By default, only Type/Method signatures are fetched. Full documentation can still be fetched when
