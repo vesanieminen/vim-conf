@@ -104,7 +104,6 @@ filetype plugin indent on     " required!
     
 "set completeopt=menu,longest
 set completeopt=longest,menuone,preview
-"set completeopt=longest,menuone
 
 " supertab:
     "let g:SuperTabDefaultCompletionType='<c-x><c-u>'
