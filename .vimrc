@@ -20,8 +20,11 @@ Plugin 'inkpot'
 Plugin 'colorv.vim'
 Plugin 'greplace.vim'
 Plugin 'git://github.com/godlygeek/csapprox.git'
-Plugin 'UltiSnips'
-Plugin 'SuperTab-continued.'
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+Plugin 'SuperTab--Van-Dewoestine'
 Plugin 'unimpaired.vim'
 Plugin 'Gundo'
 Plugin 'git://github.com/nosami/Omnisharp.git'
@@ -127,6 +130,9 @@ nnoremap <Leader>O :NERDTreeFind<CR>
 nnoremap <leader>g :GundoToggle<CR>
 nnoremap <leader>, :tabedit $MYVIMRC<CR>
 
+" Ultisnips
+    let g:UltiSnipsExpandTrigger="<C-S-u>"
+
 "OmniSharp settings:
     "let g:Omnisharp_start_server = 0
     "This is the default value, setting it isn't actually necessary
@@ -218,8 +224,7 @@ endif
 "  autocmd bufwritepost .vimrc source $MYVIMRC
 "endif
 
-let g:UltiSnipsSnippetsDir = '~/.vim/bundle/UltiSnips/UltiSnips'
-"let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/snippets' " this doesn't work at the moment 10.11.2012
+let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/ultisnips'
 
 let g:tagbar_sort = 0
 
