@@ -1,0 +1,22 @@
+##############################
+#  Vesa Nieminen's snippets  #
+##############################
+
+snippet M "Method macro"
+METHOD;
+endsnippet
+    
+snippet F "Function macro"
+FUNCTION;
+endsnippet
+
+snippet DEF "Define class macro" !b
+DEFINE_CLASS(`!v
+    matchstr(matchstr(getline(search('class', 'b')), '\w\+\s\(\w\+\)'), '\w\+$')
+`);
+endsnippet
+
+snippet temp "Temp block for commented code" !b
+{ // temp block for code folding
+}
+endsnippet
