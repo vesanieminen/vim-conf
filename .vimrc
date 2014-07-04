@@ -2,6 +2,7 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/vim-conf/
 call vundle#begin()
 
 " let Vundle manage Vundle
@@ -224,7 +225,7 @@ endif
 "  autocmd bufwritepost .vimrc source $MYVIMRC
 "endif
 
-let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/ultisnips'
+let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/UltiSnips'
 
 let g:tagbar_sort = 0
 
