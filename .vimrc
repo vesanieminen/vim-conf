@@ -31,8 +31,8 @@ Plugin 'Gundo'
 Plugin 'git://github.com/nosami/Omnisharp.git'
 Plugin 'git://github.com/tpope/vim-dispatch.git'
 Plugin 'Syntastic'
-"Plugin 'git://github.com/Valloric/YouCompleteMe.git'
-Plugin 'Keithbsmiley/swift.vim'
+Plugin 'git://github.com/Valloric/YouCompleteMe.git'
+"Plugin 'Keithbsmiley/swift.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
