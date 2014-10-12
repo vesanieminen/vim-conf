@@ -32,7 +32,8 @@ Plugin 'git://github.com/nosami/Omnisharp.git'
 Plugin 'git://github.com/tpope/vim-dispatch.git'
 Plugin 'Syntastic'
 "Plugin 'git://github.com/Valloric/YouCompleteMe.git'
-Plugin 'Keithbsmiley/swift.vim'
+"Plugin 'Keithbsmiley/swift.vim'
+Plugin 'git://github.com/Townk/vim-autoclose.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -135,9 +136,9 @@ nnoremap <leader>, :tabedit $MYVIMRC<CR>
     let g:UltiSnipsExpandTrigger="<C-S-u>"
 
 "OmniSharp settings:
-    "let g:Omnisharp_start_server = 0
+    "let g:Omnisharp_start_server = 1
     "This is the default value, setting it isn't actually necessary
-    "let g:OmniSharp_host = "http://localhost:2000"
+    "let g:OmniSharp_host = "http://localhost:2001"
     "Timeout in seconds to wait for a response from the server
     "let g:OmniSharp_timeout = 1
     "Showmatch significantly slows down omnicomplete
@@ -239,3 +240,27 @@ function! <SID>SynStack()
 endfunc
 
 set wildmode=list:longest,full
+
+let g:ycm_server_log_level = 'debug'
+
+"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+"set statusline=%F%m%r%h%w\ 
+"set statusline+=%{fugitive#statusline()}\    
+"set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
+"set statusline+=\ [line\ %l\/%L]  
+
+set statusline=
+set statusline +=%1*\ %n\ %*            "buffer number
+set statusline +=%5*%{&ff}%*            "file format
+set statusline +=%3*%y%*                "file type
+set statusline +=%4*\ %<%F%*            "full path
+set statusline +=%2*%m%*                "modified flag
+set statusline +=%=%{fugitive#statusline()}
+set statusline +=%1*%5l%*             "current line
+set statusline +=%2*/%L%*               "total lines
+set statusline +=%1*%4v\ %*             "virtual column number
+set statusline+=%0*\ \ %m%r%w\ %P\ \ 
+"set statusline +=%2*0x%04B\ %*          "character under cursor"
+
+set laststatus=2
+
