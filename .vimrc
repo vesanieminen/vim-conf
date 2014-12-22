@@ -31,7 +31,7 @@ Plugin 'Gundo'
 Plugin 'git://github.com/nosami/Omnisharp.git'
 Plugin 'git://github.com/tpope/vim-dispatch.git'
 Plugin 'Syntastic'
-"Plugin 'git://github.com/Valloric/YouCompleteMe.git'
+Plugin 'git://github.com/Valloric/YouCompleteMe.git'
 "Plugin 'Keithbsmiley/swift.vim'
 Plugin 'git://github.com/Townk/vim-autoclose.git'
 
@@ -132,6 +132,10 @@ nnoremap <Leader>O :NERDTreeFind<CR>
 nnoremap <leader>g :GundoToggle<CR>
 nnoremap <leader>, :tabedit $MYVIMRC<CR>
 
+" ignore Unity's .meta files
+let NERDTreeIgnore=['\.meta$', '\~$']
+
+
 " Ultisnips
     let g:UltiSnipsExpandTrigger="<C-S-u>"
 
@@ -226,8 +230,6 @@ endif
 "  autocmd bufwritepost .vimrc source $MYVIMRC
 "endif
 
-let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/UltiSnips'
-
 let g:tagbar_sort = 0
 
 " Show syntax highlighting groups for word under cursor
@@ -241,7 +243,18 @@ endfunc
 
 set wildmode=list:longest,full
 
-let g:ycm_server_log_level = 'debug'
+" YouCompleteMe 
+    "let g:ycm_server_log_level = 'debug'
+    let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
+    let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+
+" UltiSnips
+    let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/UltiSnips'
+    " Make UltiSnips and YCM play nice together
+    let g:UltiSnipsExpandTrigger="<Tab>"
+    let g:UltiSnipsJumpForwardTrigger="<Tab>"                                           
+    let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
 
 "set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 "set statusline=%F%m%r%h%w\ 
