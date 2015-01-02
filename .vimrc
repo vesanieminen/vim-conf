@@ -125,7 +125,7 @@ set completeopt=longest,menuone,preview
     autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " map the <Leader> -key to , for terminal vim and gvim
-let mapleader=","
+let mapleader="ö"
 nnoremap <Leader>j :TagbarToggle<CR>
 nnoremap <Leader>o :NERDTreeToggle<CR>
 nnoremap <Leader>O :NERDTreeFind<CR>
