@@ -34,6 +34,7 @@ Plugin 'Syntastic'
 Plugin 'git://github.com/Valloric/YouCompleteMe.git'
 "Plugin 'Keithbsmiley/swift.vim'
 Plugin 'git://github.com/Townk/vim-autoclose.git'
+Plugin 'janko-m/vim-test'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -131,6 +132,11 @@ nnoremap <Leader>o :NERDTreeToggle<CR>
 nnoremap <Leader>O :NERDTreeFind<CR>
 nnoremap <leader>g :GundoToggle<CR>
 nnoremap <leader>, :tabedit $MYVIMRC<CR>
+" vim-test
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
 
 " ignore Unity's .meta files
 let NERDTreeIgnore=['\.meta$', '\~$']
@@ -172,9 +178,9 @@ let NERDTreeIgnore=['\.meta$', '\~$']
     " Remove 'Press Enter to continue' message when type information is longer than one line.
     set cmdheight=2
     " Contextual code actions (requires CtrlP)
-    nnoremap <leader>a :OmniSharpGetCodeActions<cr>
+    "nnoremap <leader>a :OmniSharpGetCodeActions<cr>
     " Run code actions with text selected in visual mode to extract method
-    vnoremap <leader>a :call OmniSharp#GetCodeActions('visual')<cr>
+    "vnoremap <leader>a :call OmniSharp#GetCodeActions('visual')<cr>
     "The following commands are contextual, based on the current cursor position.
     autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
     nnoremap <leader>fi :OmniSharpFindImplementations<cr>
