@@ -34,7 +34,10 @@ Plugin 'Syntastic'
 Plugin 'git://github.com/Valloric/YouCompleteMe.git'
 "Plugin 'Keithbsmiley/swift.vim'
 Plugin 'git://github.com/Townk/vim-autoclose.git'
+Plugin 'git://github.com/vim-scripts/closetag.vim.git'
 Plugin 'janko-m/vim-test'
+Plugin 'git://github.com/burnettk/vim-angular.git'
+Plugin 'git://github.com/edsono/vim-matchit.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
