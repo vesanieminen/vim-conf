@@ -121,7 +121,7 @@ filetype plugin indent on     " required!
 set completeopt=longest,menuone,preview
 
 " map the <Leader> -key to , for terminal vim and gvim
-let mapleader=","
+let mapleader="ö"
 nnoremap <Leader>j :TagbarToggle<CR>
 nnoremap <Leader>o :NERDTreeToggle<CR>
 nnoremap <Leader>O :NERDTreeFind<CR>
