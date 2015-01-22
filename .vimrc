@@ -32,7 +32,7 @@ Plugin 'Gundo'
 Plugin 'git://github.com/tpope/vim-dispatch.git'
 Plugin 'Syntastic'
 Plugin 'tidy'
-"Plugin 'git://github.com/Valloric/YouCompleteMe.git'
+Plugin 'git://github.com/Valloric/YouCompleteMe.git'
 Plugin 'git://github.com/burnettk/vim-angular.git'
 Plugin 'matthewsimo/angular-vim-snippets'
 Plugin 'marijnh/tern_for_vim'
@@ -40,10 +40,12 @@ Plugin 'claco/jasmine.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'git://github.com/edsono/vim-matchit.git'
 Plugin 'chrisgillis/vim-bootstrap3-snippets'
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'vim-scripts/JavaScript-Indent'
 " javascript-libraries-syntax doesn't seem to work properly with angularjs
 "Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'vim-scripts/repeat-motion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
