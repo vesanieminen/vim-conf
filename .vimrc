@@ -65,15 +65,15 @@ filetype plugin indent on     " required!
     "expandtab	expand <Tab> to spaces in Insert mode	(local to buffer)
     :set et
     "autoindent	automatically set the indent of a new line	(local to buffer)
-    :set ai
+    ":set ai
     "cindent	enable specific indenting for C code	(local to buffer)
-    :set cin
+    ":set cin
     "wrap	long lines wrap
     :set wrap
     "smartindent	do clever autoindenting	(local to buffer)
-    :set si
+    ":set si
     "cinkeys	keys that trigger C-indenting in Insert mode	(local to buffer)
-    :set cink=0{,0},0),!^F,o,O,e
+    ":set cink=0{,0},0),!^F,o,O,e
     "textwidth	line length above which to break a line	(local to buffer)
     :set tw=0
     " single character insert
