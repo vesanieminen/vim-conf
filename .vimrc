@@ -21,22 +21,13 @@ Plugin 'inkpot'
 Plugin 'colorv.vim'
 Plugin 'greplace.vim'
 Plugin 'git://github.com/godlygeek/csapprox.git'
-" Track the engine.
 Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
-Plugin 'SuperTab--Van-Dewoestine'
 Plugin 'unimpaired.vim'
 Plugin 'Gundo'
-"Plugin 'git://github.com/nosami/Omnisharp.git'
 Plugin 'git://github.com/tpope/vim-dispatch.git'
 Plugin 'Syntastic'
 Plugin 'git://github.com/Valloric/YouCompleteMe.git'
-"Plugin 'Keithbsmiley/swift.vim'
-Plugin 'git://github.com/Townk/vim-autoclose.git'
-Plugin 'git://github.com/vim-scripts/closetag.vim.git'
-"Plugin 'janko-m/vim-test'
-"Plugin 'git://github.com/burnettk/vim-angular.git'
 Plugin 'git://github.com/edsono/vim-matchit.git'
 
 " All of your Plugins must be added before the following line
@@ -95,16 +86,6 @@ filetype plugin indent on     " required!
     set nofoldenable        "dont fold by default
     set foldlevel=50         "this is just what i use
 
-" tab navigation like firefox
-    nmap <C-S-tab> :tabprevious<CR>
-    nmap <C-tab> :tabnext<CR>
-    map <C-S-tab> :tabprevious<CR>
-    map <C-tab> :tabnext<CR>
-    imap <C-S-tab> <Esc>:tabprevious<CR>i
-    imap <C-tab> <Esc>:tabnext<CR>i
-    nmap <C-S-t> :tabnew<CR>
-    imap <C-S-t> <Esc>:tabnew<CR>
-
 " faster window navigation
     nnoremap <C-h> <C-w>h
     nnoremap <C-j> <C-w>j
@@ -113,15 +94,6 @@ filetype plugin indent on     " required!
     
 "set completeopt=menu,longest
 set completeopt=longest,menuone,preview
-
-" supertab:
-    "let g:SuperTabDefaultCompletionType='<c-x><c-u>'
-    let g:SuperTabDefaultCompletionType='context'
-    "let g:SuperTabContextDefaultCompletionType='<c-n>'
-    let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-    "let g:SuperTabLongestHighlight = 1
-    let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
-    let g:SuperTabClosePreviewOnPopupClose = 1
 
 " map the <Leader> -key to , for terminal vim and gvim
 let mapleader="ö"
@@ -171,8 +143,10 @@ set wildmode=list:longest,full
 
 " YouCompleteMe 
     "let g:ycm_server_log_level = 'debug'
-    let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
-    let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+    "let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
+    "let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+    let g:ycm_key_list_select_completion=[]
+    let g:ycm_key_list_previous_completion=[]
 
 " UltiSnips
     let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/UltiSnips'
@@ -181,12 +155,7 @@ set wildmode=list:longest,full
     let g:UltiSnipsJumpForwardTrigger="<Tab>"                                           
     let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
-
-"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-"set statusline=%F%m%r%h%w\ 
-"set statusline+=%{fugitive#statusline()}\    
-"set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
-"set statusline+=\ [line\ %l\/%L]  
+let g:ycm_global_ycm_extra_conf = "~/.vim/vim-conf/.ycm_extra_conf.py"
 
 set statusline=
 set statusline +=%1*\ %n\ %*            "buffer number
@@ -199,7 +168,5 @@ set statusline +=%1*%5l%*             "current line
 set statusline +=%2*/%L%*               "total lines
 set statusline +=%1*%4v\ %*             "virtual column number
 set statusline+=%0*\ \ %m%r%w\ %P\ \ 
-"set statusline +=%2*0x%04B\ %*          "character under cursor"
-
 set laststatus=2
 
