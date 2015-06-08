@@ -28,13 +28,14 @@ Plugin 'honza/vim-snippets'
 Plugin 'SuperTab--Van-Dewoestine'
 Plugin 'unimpaired.vim'
 Plugin 'Gundo'
-Plugin 'git://github.com/nosami/Omnisharp.git'
+"Plugin 'git://github.com/nosami/Omnisharp.git'
 Plugin 'git://github.com/tpope/vim-dispatch.git'
 Plugin 'Syntastic'
 Plugin 'git://github.com/Valloric/YouCompleteMe.git'
 "Plugin 'Keithbsmiley/swift.vim'
 Plugin 'git://github.com/Townk/vim-autoclose.git'
-Plugin 'git://github.com/vim-scripts/closetag.vim.git'
+"Plugin 'git://github.com/vim-scripts/closetag.vim.git'
+Plugin 'alvan/vim-closetag'
 Plugin 'janko-m/vim-test'
 Plugin 'git://github.com/burnettk/vim-angular.git'
 Plugin 'git://github.com/edsono/vim-matchit.git'
@@ -136,6 +137,8 @@ nnoremap <Leader>O :NERDTreeFind<CR>
 nnoremap <leader>g :GundoToggle<CR>
 nnoremap <leader>, :tabedit $MYVIMRC<CR>
 " vim-test
+let test#python#runner = 'pytest'
+"let test#strategy = "terminal"
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
@@ -286,3 +289,4 @@ set statusline+=%0*\ \ %m%r%w\ %P\ \
 
 set laststatus=2
 
+let g:syntastic_html_tidy_ignore_errors=["<ion-", "discarding unexpected </ion-", " proprietary attribute \"ng-"]
