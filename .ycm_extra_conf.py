@@ -29,10 +29,12 @@ flags = [
     '-x', 'c',
     # This path will only work on OS X, but extra paths that don't exist are not
     # harmful
-    '-isystem', '/System/Library/Frameworks/Python.framework/Headers',
-    '-isystem', '/usr/include',
-    '-I', 'include'
-    '-I.'
+    '-isystem',
+    '/System/Library/Frameworks/Python.framework/Headers',
+    '-I',
+    '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/',
+    '-I',
+    '.',
 ]
 
 # Set this to the absolute path to the folder (NOT the file!) containing the

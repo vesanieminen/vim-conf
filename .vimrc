@@ -100,16 +100,9 @@ let mapleader="ö"
 nnoremap <Leader>j :TagbarToggle<CR>
 nnoremap <Leader>o :NERDTreeToggle<CR>
 nnoremap <Leader>O :NERDTreeFind<CR>
-nnoremap <leader>g :GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>, :tabedit $MYVIMRC<CR>
-" vim-test
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-
-" ignore Unity's .meta files
-let NERDTreeIgnore=['\.meta$', '\~$']
+nnoremap <leader>g :YcmCompleter GoTo<CR>
 
 let g:ackprg='ack -H --nocolor --nogroup --column --nobinary'
 
