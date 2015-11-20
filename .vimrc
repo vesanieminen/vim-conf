@@ -53,6 +53,7 @@ filetype plugin indent on     " required!
     set formatoptions=l
     set linebreak " type help linebreak for info
     set t_Co=256
+    set mouse=a
 
     "tabstop	number of spaces a <Tab> in the text stands for	(local to buffer)
     :set ts=4
@@ -93,7 +94,8 @@ filetype plugin indent on     " required!
     nnoremap <C-l> <C-w>l
     
 "set completeopt=menu,longest
-set completeopt=longest,menuone,preview
+"set completeopt=longest,menuone,preview
+set completeopt=longest,menuone
 
 " map the <Leader> -key to , for terminal vim and gvim
 let mapleader="ö"
