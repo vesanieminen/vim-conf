@@ -13,7 +13,7 @@ Plugin 'gmarik/vundle'
 "
 " original repos on github
 Plugin 'ctrlp.vim'
-Plugin 'ack.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'Tagbar'
 Plugin 'The-NERD-tree'
 Plugin 'fugitive.vim'
