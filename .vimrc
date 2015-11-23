@@ -107,7 +107,7 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>, :tabedit $MYVIMRC<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>b :!make && ./a.out<CR>
-nnoremap <leader>t :!make run_tests && ./run_tests<CR>
+nnoremap <leader>t :!make tests && ./run_tests.app<CR>
 
 "let g:ackprg='ack -H --nocolor --nogroup --column --nobinary'
 let g:ackprg='ack -H --nocolor --nogroup --column'
