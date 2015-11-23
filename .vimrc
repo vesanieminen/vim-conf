@@ -49,6 +49,7 @@ filetype plugin indent on     " required!
     endif
     syntax on
     set hlsearch " highlight search pattern text
+    set incsearch " highlight search pattern text
     set noswapfile " No swap files
     set formatoptions=l
     set linebreak " type help linebreak for info
@@ -106,8 +107,10 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>, :tabedit $MYVIMRC<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>b :!make && ./a.out<CR>
+nnoremap <leader>t :!make run_tests && ./run_tests<CR>
 
-let g:ackprg='ack -H --nocolor --nogroup --column --nobinary'
+"let g:ackprg='ack -H --nocolor --nogroup --column --nobinary'
+let g:ackprg='ack -H --nocolor --nogroup --column'
 
 " ctrlp configurations
     "let g:ctrpl_map = '<leader>e'
