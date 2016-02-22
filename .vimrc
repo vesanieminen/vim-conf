@@ -71,6 +71,7 @@ filetype plugin indent on     " required!
     set formatoptions=l
     set linebreak " type help linebreak for info
     set t_Co=256
+    set mouse=a
 
     "tabstop	number of spaces a <Tab> in the text stands for	(local to buffer)
     :set ts=4
@@ -176,17 +177,17 @@ endfunc
 
 set wildmode=list:longest,full
 
-" YouCompleteMe 
-    "let g:ycm_server_log_level = 'debug'
-    let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
-    let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
-
-" UltiSnips
-    let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/UltiSnips'
-    " Make UltiSnips and YCM play nice together
-    let g:UltiSnipsExpandTrigger="<Tab>"
-    let g:UltiSnipsJumpForwardTrigger="<Tab>"                                           
-    let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+"" YouCompleteMe 
+"    "let g:ycm_server_log_level = 'debug'
+"    let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
+"    let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+"
+"" UltiSnips
+"    let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/UltiSnips'
+"    " Make UltiSnips and YCM play nice together
+"    let g:UltiSnipsExpandTrigger="<Tab>"
+"    let g:UltiSnipsJumpForwardTrigger="<Tab>"                                           
+"    let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 set statusline=
 set statusline +=%1*\ %n\ %*            "buffer number
@@ -200,3 +201,39 @@ set statusline +=%2*/%L%*               "total lines
 set statusline +=%1*%4v\ %*             "virtual column number
 set statusline+=%0*\ \ %m%r%w\ %P\ \ 
 set laststatus=2
+
+function! g:UltiSnips_Complete()
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res == 0
+    if pumvisible()
+      return "\<C-n>"
+    else
+      call UltiSnips#JumpForwards()
+      if g:ulti_jump_forwards_res == 0
+        return "\<TAB>"
+      endif
+    endif
+  endif
+  return ""
+endfunction
+
+function! g:UltiSnips_Reverse()
+  call UltiSnips#JumpBackwards()
+  if g:ulti_jump_backwards_res == 0
+    return "\<C-P>"
+  endif
+
+  return ""
+endfunction
+
+
+if !exists("g:UltiSnipsJumpForwardTrigger")
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+endif
+
+if !exists("g:UltiSnipsJumpBackwardTrigger")
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+endif
+
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
+au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
