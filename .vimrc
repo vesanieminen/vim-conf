@@ -16,6 +16,7 @@ Plugin 'ctrlp.vim'
 Plugin 'ack.vim'
 Plugin 'Tagbar'
 Plugin 'The-NERD-tree'
+"Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'fugitive.vim'
 Plugin 'inkpot'
 Plugin 'colorv.vim'
@@ -35,18 +36,17 @@ Plugin 'tidy'
 Plugin 'git://github.com/Valloric/YouCompleteMe.git'
 Plugin 'git://github.com/burnettk/vim-angular.git'
 Plugin 'matthewsimo/angular-vim-snippets'
-Plugin 'marijnh/tern_for_vim'
+"Plugin 'marijnh/tern_for_vim'
 Plugin 'claco/jasmine.vim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'git://github.com/edsono/vim-matchit.git'
 Plugin 'chrisgillis/vim-bootstrap3-snippets'
 "Plugin 'hail2u/vim-css3-syntax'
 Plugin 'JulesWang/css.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'vim-scripts/JavaScript-Indent'
-" javascript-libraries-syntax doesn't seem to work properly with angularjs
-"Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'vim-scripts/repeat-motion'
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -106,14 +106,15 @@ filetype plugin indent on     " required!
     set foldlevel=50         "this is just what i use
 
 " tab navigation like firefox
-    nmap <C-S-tab> :tabprevious<CR>
-    nmap <C-tab> :tabnext<CR>
-    map <C-S-tab> :tabprevious<CR>
-    map <C-tab> :tabnext<CR>
-    imap <C-S-tab> <Esc>:tabprevious<CR>i
-    imap <C-tab> <Esc>:tabnext<CR>i
-    nmap <C-S-t> :tabnew<CR>
-    imap <C-S-t> <Esc>:tabnew<CR>
+"    nmap <C-S-tab> :tabprevious<CR>
+"    nmap <C-tab> :tabnext<CR>
+"    map <C-S-tab> :tabprevious<CR>
+"    map <C-tab> :tabnext<CR>
+"    imap <C-S-tab> <Esc>:tabprevious<CR>i
+"    imap <C-tab> <Esc>:tabnext<CR>i
+"    nmap <C-S-t> :tabnew<CR>
+"    imap <C-S-t> <Esc>:tabnew<CR>
+map <C-n> :tabnew<CR>
 
 " faster window navigation
     nnoremap <C-h> <C-w>h
@@ -129,6 +130,8 @@ let mapleader="ö"
 nnoremap <Leader>j :TagbarToggle<CR>
 nnoremap <Leader>o :NERDTreeToggle<CR>
 nnoremap <Leader>O :NERDTreeFind<CR>
+"nnoremap <Leader>o :NERDTreeTabsToggle<CR>
+"nnoremap <Leader>O :NERDTreeTabsFind<CR>
 nnoremap <leader>g :GundoToggle<CR>
 nnoremap <leader>, :tabedit $MYVIMRC<CR>
 " vim-test
@@ -202,38 +205,44 @@ set statusline +=%1*%4v\ %*             "virtual column number
 set statusline+=%0*\ \ %m%r%w\ %P\ \ 
 set laststatus=2
 
-function! g:UltiSnips_Complete()
-  call UltiSnips#ExpandSnippet()
-  if g:ulti_expand_res == 0
-    if pumvisible()
-      return "\<C-n>"
-    else
-      call UltiSnips#JumpForwards()
-      if g:ulti_jump_forwards_res == 0
-        return "\<TAB>"
+" javascript-libs
+    let g:used_javascript_libs = 'angularjs'
+" enhanced javascript syntax
+    au FileType javascript call JavaScriptFold()
+
+" Ultisnips + YCM fix:
+    function! g:UltiSnips_Complete()
+      call UltiSnips#ExpandSnippet()
+      if g:ulti_expand_res == 0
+        if pumvisible()
+          return "\<C-n>"
+        else
+          call UltiSnips#JumpForwards()
+          if g:ulti_jump_forwards_res == 0
+            return "\<TAB>"
+          endif
+        endif
       endif
+      return ""
+    endfunction
+
+    function! g:UltiSnips_Reverse()
+      call UltiSnips#JumpBackwards()
+      if g:ulti_jump_backwards_res == 0
+        return "\<C-P>"
+      endif
+
+      return ""
+    endfunction
+
+
+    if !exists("g:UltiSnipsJumpForwardTrigger")
+      let g:UltiSnipsJumpForwardTrigger = "<tab>"
     endif
-  endif
-  return ""
-endfunction
 
-function! g:UltiSnips_Reverse()
-  call UltiSnips#JumpBackwards()
-  if g:ulti_jump_backwards_res == 0
-    return "\<C-P>"
-  endif
+    if !exists("g:UltiSnipsJumpBackwardTrigger")
+      let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    endif
 
-  return ""
-endfunction
-
-
-if !exists("g:UltiSnipsJumpForwardTrigger")
-  let g:UltiSnipsJumpForwardTrigger = "<tab>"
-endif
-
-if !exists("g:UltiSnipsJumpBackwardTrigger")
-  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-endif
-
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
-au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+    au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
+    au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
