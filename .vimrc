@@ -1,13 +1,13 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 set rtp+=~/.vim/vim-conf/
 call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " My Plugins here:
 "
@@ -33,7 +33,7 @@ Plugin 'Gundo'
 Plugin 'git://github.com/tpope/vim-dispatch.git'
 Plugin 'Syntastic'
 Plugin 'tidy'
-Plugin 'git://github.com/Valloric/YouCompleteMe.git'
+"Plugin 'https://github.com/vesanieminen/YouCompleteMe@stable'
 Plugin 'git://github.com/burnettk/vim-angular.git'
 Plugin 'matthewsimo/angular-vim-snippets'
 "Plugin 'marijnh/tern_for_vim'
