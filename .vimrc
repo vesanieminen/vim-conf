@@ -1,56 +1,50 @@
 set nocompatible               " be iMproved
-filetype off                   " required!
+ "filetype off                   " required!
 
-set rtp+=~/.vim/bundle/Vundle.vim/
 set rtp+=~/.vim/vim-conf/
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle
-" required! 
-Plugin 'VundleVim/Vundle.vim'
-
-" My Plugins here:
-"
-" original repos on github
-Plugin 'ctrlp.vim'
-Plugin 'ack.vim'
-Plugin 'Tagbar'
-Plugin 'The-NERD-tree'
-"Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'fugitive.vim'
-Plugin 'inkpot'
-Plugin 'colorv.vim'
-Plugin 'greplace.vim'
-Plugin 'git://github.com/godlygeek/csapprox.git'
+Plug 'ctrlp.vim'
+Plug 'ack.vim'
+Plug 'Tagbar'
+Plug 'The-NERD-tree'
+"Plug 'jistr/vim-nerdtree-tabs'
+Plug 'fugitive.vim'
+Plug 'inkpot'
+Plug 'colorv.vim'
+Plug 'greplace.vim'
+Plug 'git://github.com/godlygeek/csapprox.git'
 " Track the engine.
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-"Plugin 'SuperTab--Van-Dewoestine'
-Plugin 'unimpaired.vim'
-Plugin 'Gundo'
-"Plugin 'git://github.com/nosami/Omnisharp.git'
-Plugin 'git://github.com/tpope/vim-dispatch.git'
-Plugin 'Syntastic'
-Plugin 'tidy'
-"Plugin 'https://github.com/vesanieminen/YouCompleteMe@stable'
-Plugin 'git://github.com/burnettk/vim-angular.git'
-Plugin 'matthewsimo/angular-vim-snippets'
-"Plugin 'marijnh/tern_for_vim'
-Plugin 'claco/jasmine.vim'
-Plugin 'git://github.com/edsono/vim-matchit.git'
-Plugin 'chrisgillis/vim-bootstrap3-snippets'
-"Plugin 'hail2u/vim-css3-syntax'
-Plugin 'JulesWang/css.vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'vim-scripts/JavaScript-Indent'
-Plugin 'vim-scripts/repeat-motion'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
+Plug 'honza/vim-snippets'
+"Plug 'SuperTab--Van-Dewoestine'
+Plug 'unimpaired.vim'
+Plug 'Gundo', {'on': 'GundoToggle'}
+"Plug 'git://github.com/nosami/Omnisharp.git'
+Plug 'git://github.com/tpope/vim-dispatch.git'
+Plug 'Syntastic'
+Plug 'tidy'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'vesanieminen/YouCompleteMe', {'branch': 'stable'}
+Plug 'git://github.com/burnettk/vim-angular.git'
+Plug 'matthewsimo/angular-vim-snippets'
+"Plug 'marijnh/tern_for_vim'
+Plug 'claco/jasmine.vim'
+Plug 'git://github.com/edsono/vim-matchit.git'
+Plug 'chrisgillis/vim-bootstrap3-snippets'
+"Plug 'hail2u/vim-css3-syntax'
+Plug 'JulesWang/css.vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'vim-scripts/JavaScript-Indent'
+Plug 'vim-scripts/repeat-motion'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/javascript-libraries-syntax.vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on     " required!
+"Add plugins to &runtimepath
+call plug#end()
+
+"filetype plugin indent on     " required!
 "
 " Brief help
 " :PluginList          - list configured bundles
@@ -62,7 +56,7 @@ filetype plugin indent on     " required!
 " NOTE: comments after Plugin command are not allowed..
 
 " Basic vim configurations:
-    if filereadable(expand("~/.vim/bundle/inkpot/colors/inkpot.vim"))
+    if filereadable(expand("~/.vim/plugged/inkpot/colors/inkpot.vim"))
         colorscheme inkpot
     endif
     syntax on
