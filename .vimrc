@@ -1,50 +1,38 @@
 set nocompatible               " be iMproved
-filetype off                   " required!
+ "filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
 set rtp+=~/.vim/vim-conf/
-call vundle#begin()
-
-" let Vundle manage Vundle
-" required! 
-Plugin 'gmarik/vundle'
+call plug#begin('~/.vim/plugged')
 
 " My Plugins here:
 "
 " original repos on github
-Plugin 'ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'Tagbar'
-Plugin 'The-NERD-tree'
-Plugin 'fugitive.vim'
-Plugin 'inkpot'
-Plugin 'colorv.vim'
-Plugin 'greplace.vim'
-Plugin 'git://github.com/godlygeek/csapprox.git'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'unimpaired.vim'
-Plugin 'Gundo'
-Plugin 'git://github.com/tpope/vim-dispatch.git'
-Plugin 'Syntastic'
-Plugin 'git://github.com/Valloric/YouCompleteMe.git'
-Plugin 'git://github.com/edsono/vim-matchit.git'
+Plug 'Gundo', {'on': 'GundoToggle'}
+Plug 'SirVer/ultisnips'
+Plug 'Syntastic'
+Plug 'Tagbar'
+Plug 'The-NERD-tree'
+Plug 'colorv.vim'
+Plug 'ctrlp.vim'
+Plug 'fugitive.vim'
+"Plug 'git://github.com/Valloric/YouCompleteMe.git'
+Plug 'vesanieminen/YouCompleteMe', {'branch': 'stable'}
+Plug 'git://github.com/edsono/vim-matchit.git'
+Plug 'git://github.com/godlygeek/csapprox.git'
+Plug 'git://github.com/tpope/vim-dispatch.git'
+Plug 'greplace.vim'
+Plug 'honza/vim-snippets'
+Plug 'inkpot'
+Plug 'mileszs/ack.vim'
+Plug 'unimpaired.vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on     " required!
-"
-" Brief help
-" :PluginList          - list configured bundles
-" :PluginInstall(!)    - install(update) bundles
-" :PluginSearch(!) foo - search(or refresh cache first) for foo
-" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Plugin command are not allowed..
+"Add plugins to &runtimepath
+call plug#end()
+
+"filetype plugin indent on     " required!
 
 " Basic vim configurations:
-    if filereadable(expand("~/.vim/bundle/inkpot/colors/inkpot.vim"))
+    if filereadable(expand("~/.vim/plugged/inkpot/colors/inkpot.vim"))
         colorscheme inkpot
     endif
     syntax on
@@ -140,20 +128,6 @@ endfunc
 
 set wildmode=list:longest,full
 
-" YouCompleteMe 
-    "let g:ycm_server_log_level = 'debug'
-    "let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
-    "let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
-    let g:ycm_key_list_select_completion=[]
-    let g:ycm_key_list_previous_completion=[]
-
-" UltiSnips
-    let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/UltiSnips'
-    " Make UltiSnips and YCM play nice together
-    let g:UltiSnipsExpandTrigger="<Tab>"
-    let g:UltiSnipsJumpForwardTrigger="<Tab>"                                           
-    let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
-
 let g:ycm_global_ycm_extra_conf = "~/.vim/vim-conf/.ycm_extra_conf.py"
 
 set statusline=
@@ -168,4 +142,42 @@ set statusline +=%2*/%L%*               "total lines
 set statusline +=%1*%4v\ %*             "virtual column number
 set statusline+=%0*\ \ %m%r%w\ %P\ \ 
 set laststatus=2
+
+" Ultisnips + YCM fix:
+    function! g:UltiSnips_Complete()
+      call UltiSnips#ExpandSnippet()
+      if g:ulti_expand_res == 0
+        if pumvisible()
+          return "\<C-n>"
+        else
+          call UltiSnips#JumpForwards()
+          if g:ulti_jump_forwards_res == 0
+            return "\<TAB>"
+          endif
+        endif
+      endif
+      return ""
+    endfunction
+
+    function! g:UltiSnips_Reverse()
+      call UltiSnips#JumpBackwards()
+      if g:ulti_jump_backwards_res == 0
+        return "\<C-P>"
+      endif
+
+      return ""
+    endfunction
+
+
+    if !exists("g:UltiSnipsJumpForwardTrigger")
+      let g:UltiSnipsJumpForwardTrigger = "<tab>"
+    endif
+
+    if !exists("g:UltiSnipsJumpBackwardTrigger")
+      let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    endif
+
+    au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
+    au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+
 
