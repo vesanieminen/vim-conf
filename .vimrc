@@ -83,8 +83,8 @@ call plug#end()
     nnoremap <C-l> <C-w>l
     
 "set completeopt=menu,longest
-"set completeopt=longest,menuone,preview
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
+"set completeopt=longest,menuone
 
 " map the <Leader> -key to , for terminal vim and gvim
 let mapleader="ö"
@@ -108,6 +108,7 @@ let g:ackprg='ack -H --nocolor --nogroup --column'
         \ 'file': '\v\.(exe|so|dll)$',
         \ }
     set wildignore+=*/build/bin/*,*/build/build/*
+    let g:ctrlp_open_new_file = 't'
 
 " GUI specific configurations:
 if has("gui")
@@ -129,6 +130,7 @@ endfunc
 set wildmode=list:longest,full
 
 let g:ycm_global_ycm_extra_conf = "~/.vim/vim-conf/.ycm_extra_conf.py"
+let g:ycm_confirm_extra_conf = 0
 
 set statusline=
 set statusline +=%1*\ %n\ %*            "buffer number
