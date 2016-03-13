@@ -12,6 +12,8 @@ flags = [
     '-Wc++98-compat',
     '-Wno-long-long',
     '-Wno-variadic-macros',
+    '-Wno-unused-variable',
+    '-Wno-unused-parameter',
     '-fexceptions',
     # THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
     # language to use when compiling headers. So it will guess. Badly. So C++
