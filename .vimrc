@@ -182,4 +182,5 @@ set laststatus=2
     au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
     au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
 
-
+" enables the reading of a .vimrc file from the current directory
+set exrc
