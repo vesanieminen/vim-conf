@@ -25,11 +25,12 @@ Plug 'Gundo', {'on': 'GundoToggle'}
 Plug 'git://github.com/tpope/vim-dispatch.git'
 Plug 'Syntastic'
 Plug 'tidy'
-"Plug 'Valloric/YouCompleteMe'
-Plug 'vesanieminen/YouCompleteMe', {'branch': 'stable'}
+Plug 'Valloric/YouCompleteMe'
+"Plug 'vesanieminen/YouCompleteMe', {'branch': 'stable'}
 Plug 'git://github.com/burnettk/vim-angular.git'
 Plug 'matthewsimo/angular-vim-snippets'
 "Plug 'marijnh/tern_for_vim'
+"Plug 'ternjs/tern_for_vim'
 Plug 'claco/jasmine.vim'
 Plug 'git://github.com/edsono/vim-matchit.git'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
@@ -40,6 +41,10 @@ Plug 'vim-scripts/JavaScript-Indent'
 Plug 'vim-scripts/repeat-motion'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'severin-lemaignan/vim-minimap'
+Plug 'mxw/vim-jsx'
+Plug 'justinj/vim-react-snippets'
 
 "Add plugins to &runtimepath
 call plug#end()
@@ -174,17 +179,19 @@ endfunc
 
 set wildmode=list:longest,full
 
-"" YouCompleteMe 
-"    "let g:ycm_server_log_level = 'debug'
-"    let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
-"    let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
-"
-"" UltiSnips
-"    let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/UltiSnips'
-"    " Make UltiSnips and YCM play nice together
-"    let g:UltiSnipsExpandTrigger="<Tab>"
-"    let g:UltiSnipsJumpForwardTrigger="<Tab>"                                           
-"    let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+" YouCompleteMe 
+    "let g:ycm_server_log_level = 'debug'
+    let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
+    let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+
+" UltiSnips
+    let g:UltiSnipsSnippetsDir = '~/.vim/vim-conf/UltiSnips'
+    " Make UltiSnips and YCM play nice together
+    let g:UltiSnipsExpandTrigger="<Tab>"
+    let g:UltiSnipsJumpForwardTrigger="<Tab>"                                           
+    let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
+set diffopt+=vertical
 
 set statusline=
 set statusline +=%1*\ %n\ %*            "buffer number
@@ -200,43 +207,43 @@ set statusline+=%0*\ \ %m%r%w\ %P\ \
 set laststatus=2
 
 " javascript-libs
-    let g:used_javascript_libs = 'angularjs'
+    let g:used_javascript_libs = 'react,flux'
 " enhanced javascript syntax
     au FileType javascript call JavaScriptFold()
 
-" Ultisnips + YCM fix:
-    function! g:UltiSnips_Complete()
-      call UltiSnips#ExpandSnippet()
-      if g:ulti_expand_res == 0
-        if pumvisible()
-          return "\<C-n>"
-        else
-          call UltiSnips#JumpForwards()
-          if g:ulti_jump_forwards_res == 0
-            return "\<TAB>"
-          endif
-        endif
-      endif
-      return ""
-    endfunction
-
-    function! g:UltiSnips_Reverse()
-      call UltiSnips#JumpBackwards()
-      if g:ulti_jump_backwards_res == 0
-        return "\<C-P>"
-      endif
-
-      return ""
-    endfunction
-
-
-    if !exists("g:UltiSnipsJumpForwardTrigger")
-      let g:UltiSnipsJumpForwardTrigger = "<tab>"
-    endif
-
-    if !exists("g:UltiSnipsJumpBackwardTrigger")
-      let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-    endif
-
-    au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
-    au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+"" Ultisnips + YCM fix:
+"    function! g:UltiSnips_Complete()
+"      call UltiSnips#ExpandSnippet()
+"      if g:ulti_expand_res == 0
+"        if pumvisible()
+"          return "\<C-n>"
+"        else
+"          call UltiSnips#JumpForwards()
+"          if g:ulti_jump_forwards_res == 0
+"            return "\<TAB>"
+"          endif
+"        endif
+"      endif
+"      return ""
+"    endfunction
+"
+"    function! g:UltiSnips_Reverse()
+"      call UltiSnips#JumpBackwards()
+"      if g:ulti_jump_backwards_res == 0
+"        return "\<C-P>"
+"      endif
+"
+"      return ""
+"    endfunction
+"
+"
+"    if !exists("g:UltiSnipsJumpForwardTrigger")
+"      let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"    endif
+"
+"    if !exists("g:UltiSnipsJumpBackwardTrigger")
+"      let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"    endif
+"
+"    au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
+"    au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
