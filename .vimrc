@@ -18,11 +18,11 @@ Plugin 'Tagbar'
 Plugin 'The-NERD-tree'
 Plugin 'fugitive.vim'
 Plugin 'inkpot'
-Plugin 'colorv.vim'
+"Plugin 'colorv.vim'
 Plugin 'greplace.vim'
 Plugin 'git://github.com/godlygeek/csapprox.git'
 " Track the engine.
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 Plugin 'SuperTab--Van-Dewoestine'
@@ -38,7 +38,7 @@ Plugin 'git://github.com/Townk/vim-autoclose.git'
 Plugin 'alvan/vim-closetag'
 Plugin 'janko-m/vim-test'
 Plugin 'git://github.com/burnettk/vim-angular.git'
-Plugin 'git://github.com/edsono/vim-matchit.git'
+"Plugin 'git://github.com/edsono/vim-matchit.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
